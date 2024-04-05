@@ -5,7 +5,7 @@ void ContarPalabras(){
 	int contador=0;
 	bool esPalabra=false;
 	int caracter=0;
-	while((caracter=getchar())!='\n'&&caracter!=EOF){
+	while((caracter=getchar())!=EOF){
 		if((caracter==32)&&esPalabra){
 			esPalabra=false;
 			contador++;

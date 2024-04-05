@@ -32,7 +32,7 @@ void procesarTuberia(char* entrada){
 		close(pipefd[0]);
 		write(pipefd[1], entrada,strlen(entrada)+1);
 		close(pipefd[1]);
-		printf("Contenido enviado Porceso padre: %s\n",entrada);
+		printf("Contenido enviado Proceso padre: %s\n",entrada);
 
 	}
 
