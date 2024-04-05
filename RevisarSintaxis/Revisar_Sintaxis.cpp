@@ -13,76 +13,48 @@ void revisarSintaxis(){
 		cout<<"No se pudo abrir el archivo"<<endl;
 		return;
 	}
-	stack<int> lineasCorchete;
-	stack<int> lineasParent;
-	stack<int> lineasLlave;
 	int numLinea=0;
 	int nivelCorchete=0;
 	int nivelParentesis=0;
 	int nivelLlave=0;
 	string linea;
 	while(getline(archivo,linea)){
-		int tamanno=linea.size();
-		for(int i=0;i<tamanno;i++){
-			if(linea[i]=='{'){
-				nivelLlave++;
-				lineasLlave.push(i);
-			}else if(linea[i]=='}'){
-				nivelLlave--;
-				if(nivelLlave<0){
-					lineasLlave.push(i);
-				}else{
-					lineasLlave.pop();
-				}
-			}
-			if(linea[i]=='('){
-				nivelParentesis++;
-				lineasParent.push(i);
-			}else if(linea[i]==')'){
-				nivelParentesis--;
-				if(nivelParentesis<0){
-					lineasParent.push(i);
-				}else{
-					lineasParent.pop();
-				}
-			}
-			if(linea[i]=='['){
-				nivelCorchete++;
-				lineasCorchete.push(i);
+		for (int i = 0; linea[i] != '\0'; i++) {
+           		 if (linea[i] == '(') {
+               			 nivelParentesis++;
+           		 } else if (linea[i] == ')') {
+                		nivelParentesis--;
+                		if (nivelParentesis < 0) {
+                    			printf("Error de sintaxis en la línea %d: paréntesis no alineados\n", numLinea);
+              		  	}
+           		 } else if (linea[i] == '{') {
+              			 nivelLlave++;
+            		 } else if (linea[i] == '}') {
+               			 nivelLlave--;
+               			 if (nivelLlave < 0) {
+                  		  printf("Error de sintaxis en la línea %d: llaves no alineadas\n", numLinea);
+                		}
+          		} else if (linea[i] == '[') {
+               			 nivelCorchete++;
+            		} else if (linea[i] == ']') {
+               			 nivelCorchete--;
+               			 if (nivelCorchete < 0) {
+                  		  printf("Error de sintaxis en la línea %d: corchetes no alineados\n", numLinea);
+                		}
+           		 }
+       		 }
+        	numLinea++;
+   	 }
 
-			}else if(linea[i]==']'){
-				nivelCorchete--;
-				if(nivelCorchete<0){
-					lineasCorchete.push(i);
-				}else{
-					lineasCorchete.pop();
-				}
-
-			}
-		}
-
-	}
-		if(lineasLlave.empty()&&lineasCorchete.empty()&&lineasParent.empty()){
-			cout<<"El archivo no presenta errores de sintaxis"<<endl;
-			return;
-
-		}else{
-
-			while(!lineasLlave.empty()){
-				cout<<"Error de uso llaves en la linea:  "<<lineasLlave.top()<<endl;
-				lineasLlave.pop();
-			}
-			while(!lineasCorchete.empty()){
-				cout<<"Error de uso de Corchete en la linea:  "<<lineasCorchete.top()<<endl;
-				lineasCorchete.pop();
-
-			}
-			while(!lineasParent.empty()){
-				cout<<"	Error de uso de parentesis en la linea: "<<lineasParent.top()<<endl;
-				lineasParent.pop();
-			}
-		}
-
+   	 if (nivelParentesis > 0) {
+      	  	cout"Error de sintaxis: paréntesis no cerrados\n";
+   	 } else if (nivelLlave > 0) {
+       		 cout<<"Error de sintaxis: llaves no cerradas\n";
+    	} else if (nivelCorchete > 0) {
+       		 cout<<"Error de sintaxis: corchetes no cerrados\n";
+        } else {
+      		  cout<<"El archivo no contiene errores de sintaxis\n";
+        }
 	archivo.close();
 }
 
