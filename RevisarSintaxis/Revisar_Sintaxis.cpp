@@ -13,7 +13,7 @@ void revisarSintaxis(){
 		cout<<"No se pudo abrir el archivo"<<endl;
 		return;
 	}
-	int numLinea=0;
+	int numLinea=1;
 	int nivelCorchete=0;
 	int nivelParentesis=0;
 	int nivelLlave=0;
@@ -46,12 +46,8 @@ void revisarSintaxis(){
         	numLinea++;
    	 }
 
-   	 if (nivelParentesis > 0) {
-      	  	cout"Error de sintaxis: paréntesis no cerrados\n";
-   	 } else if (nivelLlave > 0) {
-       		 cout<<"Error de sintaxis: llaves no cerradas\n";
-    	} else if (nivelCorchete > 0) {
-       		 cout<<"Error de sintaxis: corchetes no cerrados\n";
+   	 if (nivelParentesis != 0||nivelLlave!=0||nivelCorchete!=0) {
+      	  	cout<<"Errores de sintaxis\n";
         } else {
       		  cout<<"El archivo no contiene errores de sintaxis\n";
         }

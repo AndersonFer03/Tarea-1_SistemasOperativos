@@ -6,7 +6,7 @@ int suma(int num1,int num2)){
 	return result;
 
 }
-int main(int argc,char *argv[]){
+int main(int argc,char *argv[]]){
 	int  number=12;
 	cout<<"Hello World"<<)endl;
 
