@@ -45,8 +45,47 @@ Ejercios realizados en Oracle VM VirtualBox Manager. Desarrollado con el sistema
        como solistas.
       - Eliminación de espacios:   		 Lafamosabandaderockseseparó,almenosporuntiempo.Losintegrantesquierentrabajaruntiempocomosolistas.
 
-4. 	Escriba un programa para revisar los errores de sintaxis rudimentarios de un programa en C: paréntesis, llaves y corchetes no alineados.
-   
+4. Escriba un programa para revisar los errores de sintaxis rudimentarios de un programa en C: paréntesis, llaves y corchetes no alineados.
+   - Archivo: RevisarSintaxis
+     - Indicaciones:
+     - Abrir el archivo:  cd RevisarSintaxis
+     - Código ejecución: ./ revisarSintaxis
+     - Digitar nombre de archivo: nombreArchivo.c 
+	> Se revisa el código del "nombreArchivo.c" almacenado en la carpeta del codigo fuente de Revisar Sintaxis.
+
+   - Resultado: 	
+     - Nombre Archivo: Prueba.c
+     - Código: 
+	```ruby
+ 	#include <iostream>
+	using namespace std;
+
+	int suma(int num1,int num2)){
+		int result=num1+num2;
+		return result;
+	
+	}
+	int main(int argc,char *argv[]]){
+		int  number=12;
+		cout<<"Hello World"<<)endl;
+		
+		if(number>10)) {
+			suma((number,5);
+		}}
+	}
+
+ 	```
+     - Salida:   
+	Error de sintaxis en la línea 4: paréntesis no alineados  
+	Error de sintaxis en la línea 9: corchetes no alineados  
+	Error de sintaxis en la línea 9: paréntesis no alineados  
+	Error de sintaxis en la línea 11: paréntesis no alineados  
+	Error de sintaxis en la línea 13: paréntesis no alineados  
+	Error de sintaxis en la línea 14: paréntesis no alineados  
+	Error de sintaxis en la línea 16: llaves no alineadas  
+	Errores de sintaxis  
+
+
 5. Escriba una versión simplificada de la función "sort" de UNIX. Utilice un array de apuntadores a cadenas de caracteres y quicksort para ordenar.
     - Archivo: VersionSort
     - Indicaciones:
